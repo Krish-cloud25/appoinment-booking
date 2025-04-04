@@ -1,0 +1,9 @@
+{% extends "appointments/base.html" %}
+
+{% block content %}
+<h1>Welcome to Patient Appointment & Triage Assistant</h1>
+<p>
+    <a href="{% url 'signup' %}" class="btn btn-success me-2">Signup</a>
+    <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+</p>
+{% endblock %}

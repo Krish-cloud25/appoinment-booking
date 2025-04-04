@@ -1,0 +1,21 @@
+{% extends "appointments/base.html" %}
+
+{% block content %}
+<h2 class="text-center mb-4">Edit Appointment</h2>
+
+<form method="post" class="mx-auto" style="max-width: 600px;">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label">Age</label>
+    <input type="number" name="age" class="form-control" value="{{ appointment.age }}" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Symptoms</label>
+    <textarea name="symptoms" class="form-control" required>{{ appointment.symptoms }}</textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary w-100">Update Appointment</button>
+</form>
+
+<a href="{% url 'my_appointments' %}" class="btn btn-secondary mt-3 w-100">Cancel</a>
+{% endblock %}
