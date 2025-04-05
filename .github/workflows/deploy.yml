@@ -30,15 +30,7 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Initialize EB CLI
-        run: |
-          eb init ${{ secrets.APPLICATION_NAME }} \
-            --region ${{ secrets.AWS_REGION }} \
-            --platform "Python 3.11" \
-            --verbose \
-            --interactive=false
-          eb use ${{ secrets.ENV_NAME }}
-
       - name: Deploy to Elastic Beanstalk
         run: |
+          eb use ${{ secrets.ENV_NAME }}
           eb deploy
