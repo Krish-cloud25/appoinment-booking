@@ -1,9 +1,22 @@
 {% extends "appointments/base.html" %}
 
+{% block title %}Home - Patient Appointment & Triage Assistant{% endblock %}
+
 {% block content %}
-<h1>Welcome to Patient Appointment & Triage Assistant</h1>
-<p>
-    <a href="{% url 'signup' %}" class="btn btn-success me-2">Signup</a>
-    <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
-</p>
+<div class="text-center mt-5">
+  <h1 class="display-5 fw-bold mb-3">
+    👩‍⚕️ Welcome to the Patient Appointment & Triage Assistant
+  </h1>
+  <p class="lead mb-4">
+    A smart healthcare assistant to help you book appointments, assess symptoms, and get timely medical support.
+  </p>
+  <div>
+    <a href="{% url 'signup' %}" class="btn btn-success btn-lg me-3">
+      <i class="bi bi-person-plus-fill"></i> Signup
+    </a>
+    <a href="{% url 'login' %}" class="btn btn-primary btn-lg">
+      <i class="bi bi-box-arrow-in-right"></i> Login
+    </a>
+  </div>
+</div>
 {% endblock %}
