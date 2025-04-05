@@ -34,7 +34,9 @@ jobs:
         run: |
           eb init ${{ secrets.APPLICATION_NAME }} \
             --region ${{ secrets.AWS_REGION }} \
-            --platform "Python 3.11" --verbose
+            --platform "Python 3.11" \
+            --verbose \
+            --interactive=false
           eb use ${{ secrets.ENV_NAME }}
 
       - name: Deploy to Elastic Beanstalk
