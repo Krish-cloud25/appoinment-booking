@@ -3,13 +3,13 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Replace with a secure key in production!
+
 SECRET_KEY = 'your-secret-key'
 
-# Turn off DEBUG for security in production
+
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']  # Consider replacing with your domain for increased security
+ALLOWED_HOSTS = ['*']  
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -51,7 +51,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cloud_app.wsgi.application'
 
-# Use SQLite for simple deployment, switch to PostgreSQL/MySQL for production as needed.
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -70,7 +69,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Where static files are collected for deployment
 
-# Keep your manual static files here during development (optional)
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
