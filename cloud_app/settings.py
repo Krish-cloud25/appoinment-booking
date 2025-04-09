@@ -58,6 +58,7 @@ DATABASES = {
     }
 }
 
+
 AUTH_PASSWORD_VALIDATORS = []
 
 LANGUAGE_CODE = 'en-us'
@@ -67,7 +68,7 @@ USE_TZ = True
 
 # Static files configuration
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Where static files are collected for deployment
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
 
 
 STATICFILES_DIRS = [

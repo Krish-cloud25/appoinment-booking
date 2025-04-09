@@ -1,32 +1,52 @@
 {% extends "appointments/base.html" %}
 
 {% block content %}
-<h2 class="text-center">Book Appointment</h2>
-<form method="post" class="mx-auto" style="max-width: 600px;">
-  {% csrf_token %}
-  <div class="mb-3">
-    <label class="form-label">Age</label>
-    <input type="number" name="age" class="form-control" required>
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Symptoms</label>
-    <textarea name="symptoms" class="form-control" required></textarea>
-  </div>
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-header bg-success text-white text-center">
+      <h3>🗓️ Book an Appointment</h3>
+    </div>
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
 
-  <h4 class="mt-4">Triage Checklist</h4>
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" name="symptom1">
-    <label class="form-check-label">High fever</label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" name="symptom2">
-    <label class="form-check-label">Chest pain</label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" name="symptom3">
-    <label class="form-check-label">Shortness of breath</label>
-  </div>
+        <div class="mb-3">
+          <label class="form-label">Age</label>
+          <input type="number" name="age" class="form-control" required>
+        </div>
 
-  <button type="submit" class="btn btn-primary mt-3 w-100">Submit</button>
-</form>
+        <div class="mb-3">
+          <label class="form-label">Symptoms</label>
+          <textarea name="symptoms" class="form-control" rows="3" required></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Preferred Date</label>
+          <input type="date" name="date" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Preferred Time</label>
+          <input type="time" name="time" class="form-control" required>
+        </div>
+
+        <h5 class="mt-4">Triage Checklist</h5>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="symptom1" id="symptom1">
+          <label class="form-check-label" for="symptom1">High fever</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="symptom2" id="symptom2">
+          <label class="form-check-label" for="symptom2">Chest pain</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="symptom3" id="symptom3">
+          <label class="form-check-label" for="symptom3">Shortness of breath</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-4 w-100">Book Appointment</button>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}

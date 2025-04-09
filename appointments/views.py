@@ -1,9 +1,9 @@
-# CI/CD test deployment run ✅
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .models import Profile, Appointment, TriageForm, Doctor
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 
 
 def home(request):
@@ -50,17 +50,16 @@ def logout_view(request):
 @login_required
 def book_appointment(request):
     if request.method == 'POST':
-        name = request.user.username  # 🛠 patient name from logged-in user
+        name = request.user.username
         age = int(request.POST['age'])
         symptoms = request.POST['symptoms']
         symptom1 = 'symptom1' in request.POST
         symptom2 = 'symptom2' in request.POST
         symptom3 = 'symptom3' in request.POST
+        date = request.POST['date']
+        time = request.POST['time']
 
-        # Calculate urgency score
         score = sum([symptom1, symptom2, symptom3]) * 10
-
-        # Only use available doctors
         doctor = Doctor.objects.filter(available=True).first()
 
         Appointment.objects.create(
@@ -68,7 +67,9 @@ def book_appointment(request):
             age=age,
             symptoms=symptoms,
             urgency_score=score,
-            doctor=doctor
+            doctor=doctor,
+            date=date,
+            time=time
         )
 
         return render(request, 'appointments/confirmation.html', {
@@ -91,6 +92,8 @@ def edit_my_appointment(request, pk):
     if request.method == 'POST':
         appointment.age = int(request.POST['age'])
         appointment.symptoms = request.POST['symptoms']
+        appointment.date = request.POST['date']
+        appointment.time = request.POST['time']
         appointment.save()
         return redirect('my_appointments')
     return render(request, 'appointments/edit_my_appointment.html', {'appointment': appointment})
@@ -119,6 +122,8 @@ def edit_appointment(request, pk):
         appointment.patient_name = request.POST['name']
         appointment.age = int(request.POST['age'])
         appointment.symptoms = request.POST['symptoms']
+        appointment.date = request.POST['date']
+        appointment.time = request.POST['time']
         appointment.save()
         return redirect('dashboard')
     return render(request, 'appointments/edit.html', {'appointment': appointment})

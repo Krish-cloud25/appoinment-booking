@@ -9,9 +9,20 @@
     <label class="form-label">Age</label>
     <input type="number" name="age" class="form-control" value="{{ appointment.age }}" required>
   </div>
+
   <div class="mb-3">
     <label class="form-label">Symptoms</label>
     <textarea name="symptoms" class="form-control" required>{{ appointment.symptoms }}</textarea>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Appointment Date</label>
+    <input type="date" name="date" class="form-control" value="{{ appointment.date|date:'Y-m-d' }}" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Appointment Time</label>
+    <input type="time" name="time" class="form-control" value="{{ appointment.time|time:'H:i' }}" required>
   </div>
 
   <button type="submit" class="btn btn-primary w-100">Update Appointment</button>
